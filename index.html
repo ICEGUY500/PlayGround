@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#091313" />
+  <meta name="description" content="Run. Hide. Rescue. Freeze. Survive. A daily survival challenge." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23091111'/%3E%3Cpath fill='%23d5fa54' d='M6 6h9v9H6zm11 0h9v9h-9zM6 17h9v9H6zm11 0h9v9h-9z'/%3E%3C/svg%3E" />
+  <title>Freeze Tag: Zero Hour</title>
+  <link rel="preload" href="assets/fonts/chakra-700.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Zero Hour home">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-name">NIGHT<span>SHIFT</span></span>
+      </a>
+      <div class="season-tag"><span class="live-dot"></span> SECTOR 07 <i>·</i> LIVE OPERATION</div>
+      <div class="top-right"><span class="profile-label">ROOKIE RUNNER</span><span class="avatar">R</span></div>
+    </header>
+
+    <section class="game-layout" aria-label="Freeze Tag Zero Hour game">
+      <div class="play-column">
+        <div class="intro-heading">
+          <div class="eyebrow"><span class="eyebrow-line"></span> AFTER DARK, NO ONE GETS LEFT BEHIND</div>
+          <h1>FREEZE TAG<span class="title-colon">:</span> <em>ZERO HOUR</em></h1>
+          <p>They hunt by sound. Your crew is frozen out there. <b>Bring everyone home.</b></p>
+        </div>
+
+        <div class="game-frame" id="gameFrame">
+          <div class="frame-topline"><span><span class="signal-icon">◉</span> NIGHTFALL DISTRICT</span><span class="frame-live"><i></i> SIGNAL LIVE</span></div>
+          <div class="canvas-wrap">
+            <canvas id="gameCanvas" aria-label="Top down night-time game arena"></canvas>
+            <div class="start-overlay" id="startOverlay">
+              <div class="overlay-grain"></div>
+              <div class="start-content">
+                <div class="mission-stamp"><span>DAILY RUN</span><strong id="dateStamp">NOV 09</strong></div>
+                <div class="start-title">THE CITY<br /><span>ISN'T SAFE.</span></div>
+                <p>Three friends are frozen in the blackout.<br />Find them. Get out. Don't get tagged.</p>
+                <button class="primary-button" id="startButton"><span>START THE RUN</span><b>↗</b></button>
+                <div class="start-foot"><span>✦ &nbsp; FRESH RUN EVERY DAY</span><span>NO CHECKPOINTS</span></div>
+              </div>
+              <div class="overlay-coordinates">37° 46' 49.2" N &nbsp; 122° 25' 09.6" W</div>
+            </div>
+            <div class="end-overlay hidden" id="endOverlay" aria-live="polite">
+              <div class="end-card"><div class="end-kicker" id="endKicker">OPERATION COMPLETE</div><h2 id="endTitle">CREW EXTRACTED</h2><p id="endMessage"></p><div class="end-stats" id="endStats"></div><button class="primary-button" id="retryButton"><span>RUN IT BACK</span><b>↗</b></button></div>
+            </div>
+            <div class="mobile-controls" id="mobileControls">
+              <div class="joystick" id="joystick"><span class="joy-knob" id="joyKnob"></span></div>
+              <button class="touch-action" id="touchAction" aria-label="Rescue or break free">E</button>
+              <button class="touch-dash" id="touchDash" aria-label="Dash">↗</button>
+            </div>
+            <div class="toast" id="toast" aria-live="polite"></div>
+          </div>
+          <div class="frame-footer"><span><i class="footer-dot"></i> <b id="statusText">AWAITING DEPLOYMENT</b></span><span>BUILD 0.7.24 <i class="footer-divider">/</i> ZH-09</span></div>
+        </div>
+
+        <div class="controls-row">
+          <div class="control-tip"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>MOVE</span></div>
+          <div class="control-tip"><kbd>SHIFT</kbd><span>SPRINT</span></div>
+          <div class="control-tip"><kbd>SPACE</kbd><span>DASH</span></div>
+          <div class="control-tip"><kbd>E</kbd><span>RESCUE / BREAK FREE</span></div>
+          <div class="mobile-tip">TOUCH TO MOVE · TAP ACTION TO RESCUE</div>
+          <button class="sound-button" id="soundButton" aria-label="Toggle sound"><span id="soundIcon">♫</span> SOUND <b id="soundState">OFF</b></button>
+        </div>
+      </div>
+
+      <aside class="intel-column">
+        <div class="panel daily-panel">
+          <div class="panel-heading"><span>01 / DAILY BRIEF</span><span class="refresh-mark">↻</span></div>
+          <div class="daily-date"><span id="fullDate">SUNDAY, NOVEMBER 09</span><span class="daily-badge">TODAY</span></div>
+          <h2>BLACKOUT<br />AT <span>ZERO HOUR</span></h2>
+          <p>The grid is down. The Freeze Crew owns the streets. Your people are stranded in the dark.</p>
+          <div class="brief-goals"><div><span class="goal-icon">⌖</span><span>Rescue your crew</span><b>03</b></div><div><span class="goal-icon">◷</span><span>Survive the night</span><b>02:00</b></div><div><span class="goal-icon">✳</span><span>Keep your hearts</span><b>03</b></div></div>
+        </div>
+
+        <div class="panel progress-panel">
+          <div class="panel-heading"><span>02 / YOUR RECORD</span><span class="record-icon">▥</span></div>
+          <div class="record-main"><div><span class="record-label">PERSONAL BEST</span><strong id="bestTime">--:--</strong></div><div class="record-rank"><span>RUN STREAK</span><strong><span id="streakCount">0</span> <small>DAYS</small></strong></div></div>
+          <div class="record-track"><span id="bestBar"></span></div>
+          <div class="record-caption"><span id="rescuedLifetime">0 FRIENDS RESCUED</span><span id="recordHint">YOUR FIRST RUN AWAITS</span></div>
+        </div>
+
+        <div class="panel field-panel">
+          <div class="panel-heading"><span>03 / FIELD NOTES</span><span class="field-mark">✳</span></div>
+          <div class="field-note"><span class="note-index">01</span><p><b>Grass hides you.</b> Hunters lose your trail if you stay low in the overgrowth.</p></div>
+          <div class="field-note"><span class="note-index">02</span><p><b>Don't stop moving.</b> A clean dash can slip past a hunter's freeze-tag reach.</p></div>
+          <div class="field-note"><span class="note-index">03</span><p><b>Hold your ground.</b> Stay near a frozen friend to thaw them out.</p></div>
+        </div>
+
+        <div class="footer-quote"><span>“</span> WE LEAVE NO ONE IN THE COLD.</div>
+      </aside>
+    </section>
+    <footer class="site-footer"><span>© NIGHTSHIFT STUDIO</span><span>ONE CITY. ONE NIGHT. ONE MORE CHANCE.</span><span>PLAY FAIR <i>·</i> PLAY KIND</span></footer>
+  </main>
+  <script src="game.js" defer></script>
+</body>
+</html>
